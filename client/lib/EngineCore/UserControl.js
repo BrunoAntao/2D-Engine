@@ -1,41 +1,48 @@
-function userControl(event) {
-    
-    let keyCode;
+class UserControl {
 
-    //let gameCanvas = new Engine(800, 800);
+    constructor() {}
 
-    let width = gameCanvas.width;
-    let height = gameCanvas.height;
-    let context = gameCanvas.context;
+    eventHandler(event) {
 
-    if (window.event) keyCode = event.keyCode;
+        let keyCode;
 
-    else if (event.which) keyCode = event.which;
+        let gameCanvas = new Engine(800, 800);
 
-    keyAction(keyCode, width, height, context)
-}
+        let width = gameCanvas.width;
+        let height = gameCanvas.height;
+        let context = gameCanvas.context;
 
-function keyAction(keyCode, width, height, context) {
+        if (window.event) keyCode = event.keyCode;
 
-    if (keyCode === 70) {
+        else if (event.which) keyCode = event.which;
 
-        context.strokeRect(Math.random() * width * 0.8, Math.random() * height * 0.8,
-                            Math.random() * 30 + 10, Math.random() * 30 + 10);
+        this.keyAction(keyCode, width, height, context)
     }
 
-    if (keyCode === 71) {
+    keyAction(keyCode, width, height, context) {
 
-        context.beginPath();
-
-        context.arc(Math.random() *  width * 0.8, Math.random() *  height * 0.8, Math.random() * 30 + 10, 0, Math.PI * 2, true);
-
-        context.closePath();
-        context.stroke();
-    }
+        if (keyCode === 70) {
     
+            context.strokeRect(Math.random() * width * 0.8, Math.random() * height * 0.8,
+                                Math.random() * 30 + 10, Math.random() * 30 + 10);
+        }
+    
+        if (keyCode === 71) {
+    
+            context.beginPath();
+    
+            context.arc(Math.random() *  width * 0.8, Math.random() *  height * 0.8, Math.random() * 30 + 10, 0, Math.PI * 2, true);
+    
+            context.closePath();
+            context.stroke();
+        }
+        
+    }
 }
+
+let control = new UserControl();
 
 document.addEventListener("keydown", (event) => {
 
-    userControl(event)
+    control.eventHandler(event);
 })
