@@ -12,6 +12,8 @@ class Scene {
 
         this.children = [];
 
+        this.events = new KeyHandler();
+
         this.draw();
 
     }
@@ -23,6 +25,30 @@ class Scene {
     }
 
     draw() {
+
+        if(this.events.keys[87]) {
+
+            console.log('Pressed: W');
+
+        }
+
+        if(this.events.keys[83]) {
+
+            console.log('Pressed: S');
+
+        }
+
+        if(this.events.keys[65]) {
+
+            console.log('Pressed: A');
+
+        }
+
+        if(this.events.keys[68]) {
+
+            console.log('Pressed: D');
+
+        }
 
         this.ctx.fillStyle = this.color;
 
