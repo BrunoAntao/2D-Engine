@@ -12,7 +12,12 @@ class Scene {
 
         this.children = [];
 
-        this.events = new KeyHandler();
+        this.events = {
+            
+            mouse: new MouseHandler().mouse,
+            keys: new KeyHandler().keys
+
+        }
 
         this.draw();
 
@@ -25,6 +30,24 @@ class Scene {
     }
 
     draw() {
+
+        if(this.events.mouse.left) {
+
+            console.log('Pressed: MouseLeft');
+
+        }
+
+        if(this.events.mouse.middle) {
+
+            console.log('Pressed: MouseMiddle');
+
+        }
+
+        if(this.events.mouse.right) {
+
+            console.log('Pressed: MouseRight');
+
+        }
 
         if(this.events.keys[87]) {
 
