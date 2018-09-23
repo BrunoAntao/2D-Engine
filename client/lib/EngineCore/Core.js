@@ -1,6 +1,6 @@
 class Engine {
 
-    constructor(width, height) {
+    constructor(width = 800, height = 800) {
 
         this.canvas = document.getElementById('canvas');
         this.context = this.canvas.getContext("2d");
