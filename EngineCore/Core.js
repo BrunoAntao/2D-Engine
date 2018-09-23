@@ -1,21 +1,14 @@
-var engine = engine || {};
+class Engine {
 
-engine = {
+    constructor(width, height) {
 
-    core : function () {
-    
-        let canvas, context, width = 800, height = 450;
-    
-        canvas = document.getElementById('canvas');
-        context = canvas.getContext("2d");
-        canvas.height = height;
-        canvas.width = width;
-    
-        return {
-    
-            width: width,
-            height: height,
-            context: context
-        };
+        this.canvas = document.getElementById('canvas');
+        this.context = this.canvas.getContext("2d");
+        this.height = height;
+        this.width = width;
+
+        this.canvas.width = width;
+        this.canvas.height = height;
     }
+
 }

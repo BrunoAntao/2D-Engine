@@ -2,7 +2,7 @@ function userControl(event) {
     
     let keyCode;
 
-    let gameCanvas = engine.core();
+    //let gameCanvas = new Engine(800, 800);
 
     let width = gameCanvas.width;
     let height = gameCanvas.height;
@@ -34,3 +34,8 @@ function keyAction(keyCode, width, height, context) {
     }
     
 }
+
+document.addEventListener("keydown", (event) => {
+
+    userControl(event)
+})
