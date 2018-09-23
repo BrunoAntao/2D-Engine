@@ -1,0 +1,14 @@
+body {
+
+  margin: 0;
+  overflow: hidden;
+  user-select: none;
+  background-color: #212121;
+  
+}
+
+canvas {
+
+  display: block;
+
+}
