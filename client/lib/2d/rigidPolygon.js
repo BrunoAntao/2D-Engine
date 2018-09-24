@@ -7,6 +7,7 @@ class RigidPolygon extends Polygon {
         this.normals = [];
         this.vel = vel;
         this.acc = acc;
+        this.gravity = 0.08;
 
         for (let i = 0; i < this.vects.length; i++) {
 
@@ -17,8 +18,22 @@ class RigidPolygon extends Polygon {
 
     update() {
 
-        this.position = this.position.add(this.vel);
-        this.vel = this.vel.add(this.acc);
+        if(this.acc.y == 0) {
+
+            this.position.x += this.vel.x;
+            this.position.y += this.vel.y + 0.5*Math.pow(this.gravity, 2);
+
+            this.vel.x += this.acc.x;
+            this.vel.y += this.gravity;
+        }
+
+        else {
+
+            this.position = this.position.add(this.vel);
+            this.vel = this.vel.add(this.acc);
+        }
+
+        
 
     }
 
