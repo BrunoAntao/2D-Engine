@@ -5,9 +5,7 @@ class Polygon {
         this.parent = parent;
         this.parent.add(this);
 
-        this.vertices = vertices;
-
-        this.anchor = { x: MathLib.getMin(vertices, 'x'), y: MathLib.getMax(vertices, 'y') }
+        this.vertices = vertices
 
         this.angle = 0;
 
