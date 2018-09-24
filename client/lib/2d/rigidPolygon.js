@@ -1,8 +1,8 @@
 class RigidPolygon extends Polygon {
 
-    constructor(parent, x, y, vel = {x: 0, y: 0}, acc = {x: 0, y: 0}, [...vertices], fill, stroke) {
+    constructor(parent, pos = new Vec2(0, 0), vel = new Vec2(0, 0), acc = new Vec2(0, 0), [...vertices], fill, stroke) {
 
-        super(parent, x, y, vertices, fill, stroke)
+        super(parent, pos, vertices, fill, stroke)
 
         this.normals = [];
         this.vel = vel;
@@ -17,11 +17,9 @@ class RigidPolygon extends Polygon {
 
     update() {
 
-        this.x += this.vel.x;
-        this.y += this.vel.y;
+        this.position = this.position.add(this.vel);
+        this.vel = this.vel.add(this.acc);
 
-        this.vel.x += this.acc.x;
-        this.vel.y += this.acc.y;
     }
 
     move() {
