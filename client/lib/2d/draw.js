@@ -34,6 +34,7 @@ class Scene {
         if(this.events.mouse.left) {
 
             console.log('Pressed: MouseLeft');
+            console.log('coords: ' + this.events.mouse.x + ' | ' + this.events.mouse.y);
 
         }
 
@@ -99,6 +100,8 @@ class Poly {
         this.x = x;
         this.y = y;
 
+        this.angle = 0;
+
         this.points = points;
 
         this.fill = fill;
@@ -111,14 +114,16 @@ class Poly {
         this.parent.ctx.strokeStyle = this.stroke;
         this.parent.ctx.fillStyle = this.fill;
 
-        this.parent.ctx.moveTo(this.x, this.y);
+        this.parent.ctx.moveTo(this.x + Math.floor(this.points[0].x * Math.cos(this.angle/180 * Math.PI) + this.points[0].y * Math.sin(this.angle/180 * Math.PI)), this.y + Math.floor(this.points[0].y * Math.cos(this.angle/180 * Math.PI) - this.points[0].x * Math.sin(this.angle/180 * Math.PI)));
         this.parent.ctx.beginPath();
 
-        this.points.forEach(function(point) {
+        for(let i = 1; i < this.points.length; i++) {
 
-            this.parent.ctx.lineTo(this.x + point.x, this.y + point.y);
+            this.parent.ctx.lineTo(this.x + Math.floor(this.points[i].x * Math.cos(this.angle/180 * Math.PI) + this.points[i].y * Math.sin(this.angle/180 * Math.PI)), this.y + Math.floor(this.points[i].y * Math.cos(this.angle/180 * Math.PI) - this.points[i].x * Math.sin(this.angle/180 * Math.PI)));
 
-        }, this)
+        }
+
+        this.parent.ctx.lineTo(this.x + Math.floor(this.points[0].x * Math.cos(this.angle/180 * Math.PI) + this.points[0].y * Math.sin(this.angle/180 * Math.PI)), this.y + Math.floor(this.points[0].y * Math.cos(this.angle/180 * Math.PI) - this.points[0].x * Math.sin(this.angle/180 * Math.PI)));
 
         this.parent.ctx.closePath();
         this.parent.ctx.fill();

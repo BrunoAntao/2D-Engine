@@ -1,4 +1,4 @@
-class Vec2D {
+class Vec2 {
 
     constructor(x, y) {
 
@@ -13,17 +13,17 @@ class Vec2D {
 
     add(vec) {
 
-        return new Vec2D(vec.x + this.x, vec.y + this.y);
+        return new Vec2(vec.x + this.x, vec.y + this.y);
     }
 
     subtract(vec) {
 
-        return new Vec2D(this.x - vec.x, this.y -  vec.y);
+        return new Vec2(this.x - vec.x, this.y -  vec.y);
     }
 
     scale(n) {
 
-        return new Vec2D(n*this.x, n*this.y);
+        return new Vec2(n*this.x, n*this.y);
     }
 
     dot(vec) {
@@ -47,7 +47,7 @@ class Vec2D {
         newXComp += center.x;
         newYComp += center.y;
 
-        return new Vec2D(newXComp, newYComp)
+        return new Vec2(newXComp, newYComp)
     }
 
     normalize() {
@@ -56,7 +56,7 @@ class Vec2D {
 
         if(norm > 0) norm = 1/norm;
 
-        return new Vec2D(this.x * norm, this.y * norm);
+        return new Vec2(this.x * norm, this.y * norm);
     }
 
     distance(vec) {
