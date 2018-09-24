@@ -69,6 +69,10 @@ class Vec2D {
 
     static getNormal(v1, v2) {
 
-        
+        let normal = v1.subtract(v2);
+
+        normal = normalize(normal);
+
+        return normal;
     }
 }

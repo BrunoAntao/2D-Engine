@@ -6,7 +6,7 @@ class RigidPolygon extends Polygon {
 
         this.normals = [];
 
-        for (let i = 0; i < this.vects.length, i++) {
+        for (let i = 0; i < this.vects.length; i++) {
 
             this.normals.append(Vec2D.getNormal(i, i + 1 % this.vects.length));
         }
