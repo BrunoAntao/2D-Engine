@@ -34,6 +34,7 @@ class Scene {
         if(this.events.mouse.left) {
 
             console.log('Pressed: MouseLeft');
+            console.log('coords: ' + this.events.mouse.x + ' | ' + this.events.mouse.y);
 
         }
 
