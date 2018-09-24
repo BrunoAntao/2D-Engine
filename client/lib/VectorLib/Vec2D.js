@@ -73,6 +73,11 @@ class Vec2D {
 
         normal = normalize(normal);
 
+        temp = normal[0];
+
+        normal[0] = normal[1];
+        normal[1] = -1*temp;
+
         return normal;
     }
 }
