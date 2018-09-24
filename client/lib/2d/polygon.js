@@ -9,6 +9,7 @@ class Polygon {
         this.y = y;
 
         this.vertices = vertices;
+        this.vects = this.vertices.map( vertex => new Vec2(vertex.x, vertex.y));
 
         this.angle = 0;
 

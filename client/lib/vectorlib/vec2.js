@@ -71,9 +71,9 @@ class Vec2 {
 
         let normal = v1.subtract(v2);
 
-        normal = normalize(normal);
+        normal = normal.normalize(normal);
 
-        temp = normal[0];
+        let temp = normal[0];
 
         normal[0] = normal[1];
         normal[1] = -1*temp;

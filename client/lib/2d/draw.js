@@ -84,7 +84,17 @@ class Scene {
 
         }, this)
 
-        requestAnimationFrame(()=>this.draw());
+        requestAnimationFrame(() => { 
+        
+            this.children.forEach(child => {
+                
+                child.update();
+
+            }, this);
+
+            this.draw();
+        
+        });
 
     }
 

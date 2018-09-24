@@ -9,6 +9,7 @@
     <script type="text/javascript" src="client/lib/vectorlib/vec2.js"></script>
     <script type="text/javascript" src="client/lib/2d/polygon.js"></script>
     <script type="text/javascript" src="client/lib/2d/draw.js"></script>
+    <script type="text/javascript" src="client/lib/2d/rigidPolygon.js"></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
     <script>
 
         let scene = new Scene();
-        let poly = new Polygon(scene, 32, 32,
+        let poly = new RigidPolygon(scene, 32, 32, {x: 0, y: 0}, {x: 0, y: 0}, 
         [{x:32, y:0},
          {x:64, y:48},
          {x:42, y:80},
