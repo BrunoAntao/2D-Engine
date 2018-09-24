@@ -1,11 +1,14 @@
 class Polygon {
 
-    constructor(parent, [...vertices], fill = '#000000', stroke = '#ffffff') {
+    constructor(parent, x = 0, y = 0, [...vertices], fill = '#000000', stroke = '#ffffff') {
 
         this.parent = parent;
         this.parent.add(this);
 
-        this.vertices = vertices
+        this.x = x;
+        this.y = y;
+
+        this.vertices = vertices;
 
         this.angle = 0;
 
