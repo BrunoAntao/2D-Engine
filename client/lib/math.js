@@ -16,4 +16,5 @@ class MathLib {
 
         return Math.max(...this.getVar(list, v))
     }
+
 }

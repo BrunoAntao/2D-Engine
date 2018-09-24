@@ -66,4 +66,9 @@ class Vec2D {
 
         return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))
     }
+
+    static getNormal(v1, v2) {
+
+        
+    }
 }

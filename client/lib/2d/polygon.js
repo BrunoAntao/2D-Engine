@@ -5,13 +5,15 @@ class Polygon {
         this.parent = parent;
         this.parent.add(this);
 
-        this.vertices = vertices;
+        this.vertices = vertices
 
-        this.anchor = {x: MathLib.getMin(vertices, 'x'), y: MathLib.getMax(vertices, 'y')}
+        this.vects = vertices.map( vertex => new Vec2D(vertex.x, vertex.y))
+
+        this.anchor = {x: MathLib.getMin(vertices, 'x'), y: MathLib.getMin(vertices, 'y')}
 
         this.fill = fill;
         this.stroke = stroke;
-        
+
     }
 
     draw() {
