@@ -1,14 +1,14 @@
 class RigidPolygon extends Polygon {
 
-    constructor(parent, [...vertices], fill, stroke) {
+    constructor(parent, x, y, [...vertices], fill, stroke) {
 
-        super(parent, vertices, fill, stroke)
+        super(parent, x, y, vertices, fill, stroke)
 
         this.normals = [];
 
         for (let i = 0; i < this.vects.length; i++) {
 
-            this.normals.append(Vec2D.getNormal(i, i + 1 % this.vects.length));
+            this.normals.append(vec2.getNormal(i, i + 1 % this.vects.length));
         }
     
     }
