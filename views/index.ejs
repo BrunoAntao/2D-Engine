@@ -7,6 +7,8 @@
     <link rel="stylesheet" type="text/css" href="client/style/game.css">
     <script type="text/javascript" src="client/lib/events.js"></script>
     <script type="text/javascript" src="client/lib/2d/draw.js"></script>
+    <script type="text/javascript" src="client/lib/2d/polygon.js"></script>
+    <script type="text/javascript" src="client/lib/math.js"></script>
 </head>
 
 <body>
@@ -14,7 +16,7 @@
     <script>
 
         let scene = new Scene();
-        new Poly(scene, 32, 32,
+        new Polygon(scene,
         [{x:64, y:0},
          {x:64, y:64},
          {x:0, y:64},
