@@ -1,20 +1,25 @@
 class Polygon {
 
-    constructor(parent, pos = new Vec2(0, 0), [...vertices], fill = '#000000', stroke = '#ffffff') {
+    constructor(parent, pos = new Vec2(0, 0), vel =  new Vec2(0, 0), acc = new Vec2(0, 0), [...vertices], fill = '#000000', stroke = '#ffffff', isRigid = false) {
 
         this.parent = parent;
         this.parent.add(this);
 
+        this.shape;
+
         this.position = pos;
+        this.angle = 0;
 
         this.vertices = vertices;
         this.vects = this.vertices.map( vertex => new Vec2(vertex.x, vertex.y));
 
-        this.angle = 0;
+        if(isRigid) {
+
+            this.shape = new RigidPolygon(this, vel, acc, this.vects)
+        }
 
         this.fill = fill;
         this.stroke = stroke;
-
     }
 
     draw() {
@@ -37,5 +42,10 @@ class Polygon {
         this.parent.ctx.fill();
         this.parent.ctx.stroke();
 
+    }
+
+    update() {
+
+        if(this.shape) this.shape.update();
     }
 }

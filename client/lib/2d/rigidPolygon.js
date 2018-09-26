@@ -1,13 +1,20 @@
-class RigidPolygon extends Polygon {
+const gravity = new Vec2(0, -9.8);
 
-    constructor(parent, pos = new Vec2(0, 0), vel = new Vec2(0, 0), acc = new Vec2(0, 0), [...vertices], fill, stroke) {
+const frames = 60;
 
-        super(parent, pos, vertices, fill, stroke)
+const dt = 1/frames;
 
+class RigidPolygon {
+
+    constructor(polygon, vel = new Vec2(0, 0), acc = new Vec2(0, 0), vects) {
+
+        this.polygon = polygon;
+
+        this.vects = vects;
         this.normals = [];
+
         this.vel = vel;
         this.acc = acc;
-        this.gravity = 0.08;
 
         for (let i = 0; i < this.vects.length; i++) {
 
@@ -18,23 +25,9 @@ class RigidPolygon extends Polygon {
 
     update() {
 
-        if(this.acc.y == 0) {
-
-            this.position.x += this.vel.x;
-            this.position.y += this.vel.y + 0.5*Math.pow(this.gravity, 2);
-
-            this.vel.x += this.acc.x;
-            this.vel.y += this.gravity;
-        }
-
-        else {
-
-            this.position = this.position.add(this.vel);
-            this.vel = this.vel.add(this.acc);
-        }
-
-        
-
+        this.polygon.position = this.polygon.position.add(this.vel);
+        this.vel = this.vel.add(this.acc);
+    
     }
 
     move() {
