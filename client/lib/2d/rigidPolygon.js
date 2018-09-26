@@ -1,12 +1,12 @@
 const gravity = new Vec2(0, -9.8);
 
-const frames = 60;
+const frames = 1;
 
 const dt = 1/frames;
 
 class RigidPolygon {
 
-    constructor(polygon, vel = new Vec2(0, 0), acc = new Vec2(0, 0), vects) {
+    constructor(polygon, vel = new Vec2(0, 0), acc = new Vec2(0, 0), vects, mass = new Mass(1, 0), material = new Material(1, 0)) {
 
         this.polygon = polygon;
 
@@ -15,6 +15,11 @@ class RigidPolygon {
 
         this.vel = vel;
         this.acc = acc;
+        this.mass = mass;
+
+        this.material = material;
+
+        this.force = this.acc.scale(this.mass);
 
         for (let i = 0; i < this.vects.length; i++) {
 
@@ -25,13 +30,17 @@ class RigidPolygon {
 
     update() {
 
-        this.polygon.position = this.polygon.position.add(this.vel);
-        this.vel = this.vel.add(this.acc);
+
+        this.move();
     
     }
 
     move() {
 
+        let newPos = this.polygon.position.add(this.vel);
+        this.polygon.position = newPos.scale(dt);
 
+        let newVel = this.vel.add(this.acc);
+        this.vel = newVel.scale(dt);
     }
 }

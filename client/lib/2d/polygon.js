@@ -5,7 +5,7 @@ class Polygon {
         this.parent = parent;
         this.parent.add(this);
 
-        this.shape;
+        this.body;
 
         this.position = pos;
         this.angle = 0;
@@ -15,7 +15,7 @@ class Polygon {
 
         if(isRigid) {
 
-            this.shape = new RigidPolygon(this, vel, acc, this.vects)
+            this.body = new RigidPolygon(this, vel, acc, this.vects, new Mass(1, 0), new Material(1, 0))
         }
 
         this.fill = fill;
@@ -46,6 +46,6 @@ class Polygon {
 
     update() {
 
-        if(this.shape) this.shape.update();
+        if(this.body) this.body.update();
     }
 }
