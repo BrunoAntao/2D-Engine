@@ -12,6 +12,7 @@
     <script type="text/javascript" src="client/lib/2d/rigidPolygon.js"></script>
     <script type="text/javascript" src="client/lib/physics/mass.js"></script>
     <script type="text/javascript" src="client/lib/physics/material.js"></script>
+    <script type="text/javascript" src="client/lib/2d/circle.js"></script>
 </head>
 
 <body>
@@ -28,6 +29,8 @@
          {x:32, y:32}], 
         undefined, undefined, true)
         poly.angle = 50;
+
+        let circle = new Circle(scene, 28, new Vec2(64, 64),  new Vec2(2, 1), new Vec2(0, 0))
 
     </script>
 
