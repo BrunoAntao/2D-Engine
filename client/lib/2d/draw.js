@@ -86,6 +86,22 @@ class Scene {
 
         requestAnimationFrame(() => { 
         
+
+            for(let i = 0; i < this.children.length; i++) {
+
+                for(let j = i + 1; j < this.children.length; j++) {
+
+                    let childCollide = this.children[i];
+                    let childTestCollide = this.children[j];
+
+                    if(childCollide.body && childTestCollide.body) {
+
+                        if(childCollide.body.collider.AABBcheck(childTestCollide.body.collider)) console.log("collision");
+                        
+                    }
+                }
+            }
+
             this.children.forEach(child => {
                 
                 child.update();

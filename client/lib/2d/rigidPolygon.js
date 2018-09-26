@@ -17,6 +17,8 @@ class RigidPolygon {
         this.acc = acc;
         this.mass = mass;
 
+        this.collider = new Collision();
+
         this.material = material;
 
         this.force = this.acc.scale(this.mass);
