@@ -9,6 +9,8 @@ class RigidCircle {
         this.acc = acc;
         this.mass = mass;
 
+        this.collider = new Collision(circle, undefined, undefined);
+
         this.material = material;
 
         this.force = this.acc.scale(this.mass);

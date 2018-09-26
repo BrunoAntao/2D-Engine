@@ -96,7 +96,7 @@ class Scene {
 
                     if(childCollide.body && childTestCollide.body) {
 
-                        if(childCollide.body.collider.AABBcheck(childTestCollide.body.collider)) console.log("collision");
+                        if(childCollide.body.collider.circleVsCircle(childTestCollide)) console.log("collision");
                         
                     }
                 }

@@ -14,6 +14,7 @@
     <script type="text/javascript" src="client/lib/physics/material.js"></script>
     <script type="text/javascript" src="client/lib/2d/circle.js"></script>
     <script type="text/javascript" src="client/lib/2d/rigidCircle.js"></script>
+    <script type="text/javascript" src="client/lib/physics/collision.js"></script>
 </head>
 
 <body>
@@ -22,16 +23,17 @@
 
         let scene = new Scene();
 
-        let poly = new Polygon(scene, new Vec2(32, 32), new Vec2(2, 1), new Vec2(0, 0),
+       /*  let poly = new Polygon(scene, new Vec2(32, 32), new Vec2(2, 1), new Vec2(0, 0),
         [{x:32, y:0},
          {x:64, y:48},
          {x:42, y:80},
          {x:0, y:64},
          {x:32, y:32}], 
         undefined, undefined, true)
-        poly.angle = 50;
+        poly.angle = 50; */
 
-        let circle = new Circle(scene, 28, new Vec2(64, 64),  new Vec2(0, 1), new Vec2(0, 0), undefined, undefined, true)
+        let circle = new Circle(scene, 28, new Vec2(64, 64),  new Vec2(0, 1.5), new Vec2(0, 0), undefined, undefined, true)
+        let circle1 = new Circle(scene, 35, new Vec2(0, 0),  new Vec2(2, 1.6), new Vec2(0, 0), undefined, undefined, true)
 
     </script>
 
