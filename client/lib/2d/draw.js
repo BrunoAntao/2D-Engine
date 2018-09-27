@@ -115,7 +115,7 @@ class Scene {
                     if(childCollide.body.collider.circleVsCircle(childTestCollide)) {
                         
 
-
+                        Collision.collisionRevolver(childCollide.body, childTestCollide.body)
                         
                         console.log("collision");
                     }

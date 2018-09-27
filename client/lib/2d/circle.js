@@ -12,7 +12,7 @@ class Circle {
 
         if(isRigid) {
 
-            this.body = new RigidCircle(this, vel, acc, new Mass(1, 0), new Material(1, 0));
+            this.body = new RigidCircle(this, vel, acc, new Mass(1, 0), new Material(1, 0.8));
         }
 
         this.fill = fill;
