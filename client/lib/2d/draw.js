@@ -87,20 +87,7 @@ class Scene {
         requestAnimationFrame(() => { 
         
 
-            for(let i = 0; i < this.children.length; i++) {
-
-                for(let j = i + 1; j < this.children.length; j++) {
-
-                    let childCollide = this.children[i];
-                    let childTestCollide = this.children[j];
-
-                    if(childCollide.body && childTestCollide.body) {
-
-                        if(childCollide.body.collider.circleVsCircle(childTestCollide)) console.log("collision");
-                        
-                    }
-                }
-            }
+            this.collisionChecker();
 
             this.children.forEach(child => {
                 
@@ -112,6 +99,30 @@ class Scene {
         
         });
 
+    }
+
+    collisionChecker() {
+
+        for(let i = 0; i < this.children.length; i++) {
+
+            for(let j = i + 1; j < this.children.length; j++) {
+
+                let childCollide = this.children[i];
+                let childTestCollide = this.children[j];
+
+                if(childCollide.body && childTestCollide.body) {
+
+                    if(childCollide.body.collider.circleVsCircle(childTestCollide)) {
+                        
+
+
+                        
+                        console.log("collision");
+                    }
+                    
+                }
+            }
+        }
     }
 
 }

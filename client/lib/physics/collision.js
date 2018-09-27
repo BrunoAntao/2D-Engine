@@ -16,5 +16,10 @@ class Collision {
         r *= r;
 
         return r > Math.pow(this.polygon.center.x - collider.center.x, 2) + Math.pow(this.polygon.center.y - collider.center.y, 2)
-    }   
+    }
+    
+    static collisionRevolver(bodyA, bodyB) {
+
+        
+    }
 }
