@@ -116,7 +116,7 @@ class Scene {
                         
 
                         Collision.collisionRevolver(childCollide.body, childTestCollide.body)
-                        
+                        Collision.positionalCorrection(childCollide.body, childTestCollide.body)
                         console.log("collision");
                     }
                     

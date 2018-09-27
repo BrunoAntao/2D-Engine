@@ -30,6 +30,8 @@ class Collision {
 
         let velNormal = resolventVec.dot(normalVector);
 
+        if(velNormal == 0) return;
+
         let impulse = -1*(1 + restitution) * velNormal;
 
         impulse /= (1 / bodyA.mass.mass + 1 / bodyB.mass.mass);
@@ -37,6 +39,22 @@ class Collision {
         let vecImpulse = normalVector.scale(impulse);
 
         bodyA.vel = bodyA.vel.add(vecImpulse.scale(1 / bodyA.mass.mass))
-        bodyB.vel = bodyB.vel.add(vecImpulse.scale(1 / bodyB.mass.mass))
+        bodyB.vel = bodyB.vel.subtract(vecImpulse.scale(1 / bodyB.mass.mass))
+    }
+
+    static positionalCorrection(bodyA, bodyB) {
+
+        let percent = 0.2;
+
+        let distance = bodyB.circle.center.subtract(bodyA.circle.center);
+        let normal = distance.normalize();
+        let penetration = bodyA.circle.radius + bodyB.circle.radius - distance.lenght();
+        
+        let divisor = penetration / (bodyA.mass.mass + bodyB.mass.mass) * percent;
+
+        let correction = normal.scale(divisor);
+
+        bodyA.circle.center = bodyA.circle.center.subtract(correction.scale(1 / bodyA.mass.mass ))
+        bodyB.circle.center = bodyB.circle.center.add(correction.scale(1 / bodyB.mass.mass ))
     }
 }
