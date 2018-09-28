@@ -18,7 +18,6 @@ class RigidCircle {
 
     update() {
 
-
         this.move();
     
     }

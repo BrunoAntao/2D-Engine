@@ -13,9 +13,15 @@ class Scene {
         this.children = [];
 
         this.events = {
-            
+
             mouse: new MouseHandler().mouse,
             keys: new KeyHandler().keys
+
+        }
+
+        this.physics = {
+
+            bodies: []
 
         }
 
@@ -31,47 +37,20 @@ class Scene {
 
     draw() {
 
-        if(this.events.mouse.left) {
+        for (let i = 0; i < this.physics.bodies.length; i++) {
 
-            console.log('Pressed: MouseLeft');
-            console.log('coords: ' + this.events.mouse.x + ' | ' + this.events.mouse.y);
+            for (let j = i + 1; j < this.physics.bodies.length; j++) {
 
-        }
+                let childCollide = this.physics.bodies[i];
+                let childTestCollide = this.physics.bodies[j];
 
-        if(this.events.mouse.middle) {
+                if (childCollide.body.collider.circleVsCircle(childTestCollide)) {
 
-            console.log('Pressed: MouseMiddle');
+                    Collision.collisionRevolver(childCollide.body, childTestCollide.body);
+                    Collision.positionalCorrection(childCollide.body, childTestCollide.body);
 
-        }
-
-        if(this.events.mouse.right) {
-
-            console.log('Pressed: MouseRight');
-
-        }
-
-        if(this.events.keys[87]) {
-
-            console.log('Pressed: W');
-
-        }
-
-        if(this.events.keys[83]) {
-
-            console.log('Pressed: S');
-
-        }
-
-        if(this.events.keys[65]) {
-
-            console.log('Pressed: A');
-
-        }
-
-        if(this.events.keys[68]) {
-
-            console.log('Pressed: D');
-
+                }
+            }
         }
 
         this.ctx.fillStyle = this.color;
@@ -84,45 +63,8 @@ class Scene {
 
         }, this)
 
-        requestAnimationFrame(() => { 
-        
+        requestAnimationFrame(() => { this.draw(); });
 
-            this.collisionChecker();
-
-            this.children.forEach(child => {
-                
-                child.update();
-
-            }, this);
-
-            this.draw();
-        
-        });
-
-    }
-
-    collisionChecker() {
-
-        for(let i = 0; i < this.children.length; i++) {
-
-            for(let j = i + 1; j < this.children.length; j++) {
-
-                let childCollide = this.children[i];
-                let childTestCollide = this.children[j];
-
-                if(childCollide.body && childTestCollide.body) {
-
-                    if(childCollide.body.collider.circleVsCircle(childTestCollide)) {
-                        
-
-                        Collision.collisionRevolver(childCollide.body, childTestCollide.body)
-                        Collision.positionalCorrection(childCollide.body, childTestCollide.body)
-                        console.log("collision");
-                    }
-                    
-                }
-            }
-        }
     }
 
 }

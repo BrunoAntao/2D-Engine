@@ -1,6 +1,6 @@
 class Circle {
 
-    constructor(parent, radius, pos = new Vec2(0, 0), vel =  new Vec2(0, 0), acc = new Vec2(0, 0), fill = '#000000', stroke = '#ffffff', isRigid = false) {
+    constructor(parent, pos = new Vec2(0, 0), radius = 32, vel =  new Vec2(0, 0), acc = new Vec2(0, 0), fill = '#000000', stroke = '#ffffff', isRigid = false) {
 
         this.parent = parent;
         this.parent.add(this);
@@ -12,7 +12,9 @@ class Circle {
 
         if(isRigid) {
 
+            this.parent.physics.bodies.push(this);
             this.body = new RigidCircle(this, vel, acc, new Mass(1, 0), new Material(1, 0.8));
+        
         }
 
         this.fill = fill;
@@ -20,6 +22,8 @@ class Circle {
     }
 
     draw() {
+
+        if(this.body) this.body.update();
 
         this.parent.ctx.strokeStyle = this.stroke;
         this.parent.ctx.fillStyle = this.fill;
@@ -32,9 +36,5 @@ class Circle {
         this.parent.ctx.stroke();
     }
 
-    update() {
-
-        if(this.body) this.body.update();
-    }
 }
 
