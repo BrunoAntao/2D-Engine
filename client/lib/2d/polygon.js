@@ -1,11 +1,15 @@
 class Polygon {
 
-    constructor(parent, pos = new Vec2(0, 0), [...vertices], vel = new Vec2(0, 0), acc = new Vec2(0, 0), fill = '#000000', stroke = '#ffffff', isRigid = false) {
+    constructor(parent, pos = new Vec2(0, 0), [...vertices], vel = new Vec2(0, 0), acc = new Vec2(0, 0), options = {}) {
+
+        Object.assign(this, {
+            fill: '#000000',
+            stroke: '#ffffff',
+            isRigid: false
+        }, options);
 
         this.parent = parent;
         this.parent.add(this);
-
-        this.body;
 
         this.position = pos;
         this.angle = 0;
@@ -13,15 +17,13 @@ class Polygon {
         this.vertices = vertices;
         this.vects = this.vertices.map(vertex => new Vec2(vertex.x, vertex.y));
 
-        if (isRigid) {
+        if (this.isRigid) {
 
             this.parent.physics.bodies.push(this);
             this.body = new RigidPolygon(this, vel, acc, this.vects, new Mass(1, 0), new Material(1, 0))
 
         }
 
-        this.fill = fill;
-        this.stroke = stroke;
     }
 
     draw() {

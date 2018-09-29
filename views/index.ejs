@@ -15,6 +15,7 @@
     <script type="text/javascript" src="client/lib/2d/circle.js"></script>
     <script type="text/javascript" src="client/lib/2d/rigidCircle.js"></script>
     <script type="text/javascript" src="client/lib/physics/collision.js"></script>
+    <script type="text/javascript" src="client/lib/2d/rect.js"></script>
 </head>
 
 <body>
@@ -23,14 +24,13 @@
 
         let scene = new Scene();
 
-        //let c1 = new Circle(scene, new Vec2(32, 32), 32, new Vec2(3, 1), undefined, undefined, undefined, true);
-        //let c2 = new Circle(scene, new Vec2(200, 64), undefined, undefined, undefined, undefined, undefined, true);
-
-        // new Polygon(scene, new Vec2(64, 64),
-        //     [new Vec2(64, 0),
-        //     new Vec2(64, 64),
-        //     new Vec2(0, 64),
-        //     new Vec2(0, 0)], undefined, undefined, undefined, undefined, undefined, true);
+        new Circle(scene, new Vec2(32, 32), {
+            vel: new Vec2(5, 5),
+            isRigid: true
+        });
+        new Circle(scene, new Vec2(128, 128), {
+            isRigid: true
+        });
 
     </script>
 
