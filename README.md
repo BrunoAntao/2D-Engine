@@ -8,7 +8,11 @@
   * ctx
   * color
   * children
+  * events
+    * mouse
+    * keys
   * physics
+    * bodies
 
 * Methods
 
