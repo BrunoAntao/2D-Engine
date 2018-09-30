@@ -33,6 +33,9 @@ class Circle {
         this.parent.ctx.fillStyle = this.fill;
 
         this.parent.ctx.beginPath();
+        this.parent.ctx.moveTo(this.center.x, this.center.y);
+        this.parent.ctx.lineTo(this.center.x, this.center.y);
+        
         this.parent.ctx.arc(this.center.x, this.center.y, this.radius, 0, 2 * Math.PI);
         this.parent.ctx.closePath();
 
