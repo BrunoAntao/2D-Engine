@@ -7,27 +7,20 @@
     <link rel="stylesheet" type="text/css" href="client/style/game.css">
     <script type="text/javascript" src="client/lib/events.js"></script>
     <script type="text/javascript" src="client/lib/vectorlib/vec2.js"></script>
+    <script type="text/javascript" src="client/lib/2d/scene.js"></script>
+    <script type="text/javascript" src="client/lib/2d/circle.js"></script>
     <script type="text/javascript" src="client/lib/2d/polygon.js"></script>
-    <script type="text/javascript" src="client/lib/2d/draw.js"></script>
-    <script type="text/javascript" src="client/lib/2d/rigidPolygon.js"></script>
+    <script type="text/javascript" src="client/lib/2d/rect.js"></script>
+    <script type="text/javascript" src="client/lib/physics/collision.js"></script>
     <script type="text/javascript" src="client/lib/physics/mass.js"></script>
     <script type="text/javascript" src="client/lib/physics/material.js"></script>
-    <script type="text/javascript" src="client/lib/2d/circle.js"></script>
-    <script type="text/javascript" src="client/lib/2d/rigidCircle.js"></script>
-    <script type="text/javascript" src="client/lib/physics/collision.js"></script>
-    <script type="text/javascript" src="client/lib/2d/rect.js"></script>
+    <script type="text/javascript" src="client/lib/physics/rigidCircle.js"></script>
+    <script type="text/javascript" src="client/lib/physics/rigidPolygon.js"></script>
 </head>
 
 <body>
 
-    <script>
-
-        let scene = new Scene();
-
-        let circle = new Circle(scene, new Vec2(64, 320), {radius: 40, vel: new Vec2(1, 0), isRigid: true});
-        let circle1 = new Circle(scene, new Vec2(64, 100), {radius: 30, vel: new Vec2(0, 10), isRigid: true});
-
-    </script>
+    <script type="text/javascript" src="client/js/main.js"></script>
 
 </body>
 

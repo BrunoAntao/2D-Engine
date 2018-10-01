@@ -1,8 +1,10 @@
 class Polygon {
 
-    constructor(parent, pos = new Vec2(0, 0), [...vertices], vel = new Vec2(0, 0), acc = new Vec2(0, 0), options = {}) {
+    constructor(parent, pos = new Vec2(0, 0), [...vertices], options = {}) {
 
         Object.assign(this, {
+            vel: new Vec2(0, 0), 
+            acc: new Vec2(0, 0),
             fill: '#000000',
             stroke: '#ffffff',
             isRigid: false
@@ -20,7 +22,7 @@ class Polygon {
         if (this.isRigid) {
 
             this.parent.physics.bodies.push(this);
-            this.body = new RigidPolygon(this, vel, acc, this.vects, new Mass(1, 0), new Material(1, 0))
+            this.body = new RigidPolygon(this, this.vel, this.acc, this.vects, new Mass(1, 0), new Material(1, 0))
 
         }
 
