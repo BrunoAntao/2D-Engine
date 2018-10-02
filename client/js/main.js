@@ -8,3 +8,4 @@ let scene = new Scene();
 // let c2 = new Graphics.Circle(scene, new Vec2(200, 300));
 // c2.body = new Physics.Circle(c2, new Physics.Mass(1, 0), new Physics.Material(1, 0.8));
 
+new Graphics.Rect(scene, new Vec2(0, 0), 32, 32, { isRigid: true });

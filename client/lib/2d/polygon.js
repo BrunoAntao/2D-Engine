@@ -22,7 +22,7 @@ class Polygon {
         if (this.isRigid) {
 
             this.parent.physics.bodies.push(this);
-            this.body = new RigidPolygon(this, this.vel, this.acc, this.vects, new Mass(1, 0), new Material(1, 0))
+            this.body = new RigidPolygon(this, this.vects, this.vel, this.acc, new Mass(1, 0), new Material(1, 0))
 
         }
 

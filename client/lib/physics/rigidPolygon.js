@@ -20,7 +20,6 @@ class RigidPolygon {
         //this.collider = new Collision();
 
         this.material = material;
-
         this.force = this.acc.scale(this.mass);
 
         for (let i = 0; i < this.vects.length; i++) {

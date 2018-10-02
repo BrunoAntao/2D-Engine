@@ -19,6 +19,8 @@ class Scene {
 
         }
 
+        new MouseDetectionHandler(this, this.events.mouse);
+
         this.physics = {
 
             bodies: []
