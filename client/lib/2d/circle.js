@@ -7,21 +7,13 @@ class Circle {
             vel: new Vec2(0, 0),
             acc: new Vec2(0, 0),
             fill: '#000000',
-            stroke: '#ffffff',
-            isRigid: false
+            stroke: '#ffffff'
         }, options);
 
         this.parent = parent;
         this.parent.add(this);
 
         this.center = pos;
-
-        if (this.isRigid) {
-
-            this.parent.physics.bodies.push(this);
-            this.body = new RigidCircle(this, this.vel, this.acc, new Mass(1, 0), new Material(1, 0.8));
-
-        }
 
     }
 

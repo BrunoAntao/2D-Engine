@@ -1,15 +1,15 @@
-
 class RigidCircle {
 
-    constructor(circle, vel = new Vec2(0, 0), acc = new Vec2(0, 0), mass = new Mass(1, 0), material = new Material(1, 0)) {
+    constructor(circle, mass = new Mass(1, 0), material = new Material(1, 0)) {
 
         this.circle = circle;
+        circle.parent.physics.bodies.push(circle);
 
-        this.vel = vel;
-        this.acc = acc;
+        this.vel = circle.vel;
+        this.acc = circle.acc;
         this.mass = mass;
 
-        this.collider = new Collision(circle, undefined, undefined);
+        this.collider = new Physics.Collision(circle, undefined, undefined);
 
         this.material = material;
 

@@ -6,7 +6,7 @@ const dt = 1/frames;
 
 class RigidPolygon {
 
-    constructor(polygon, vel = new Vec2(0, 0), acc = new Vec2(0, 0), vects, mass = new Mass(1, 0), material = new Material(1, 0)) {
+    constructor(polygon, vects, vel = new Vec2(0, 0), acc = new Vec2(0, 0), mass = new Mass(1, 0), material = new Material(1, 0)) {
 
         this.polygon = polygon;
 
