@@ -36,16 +36,16 @@ class Vec2 {
         return this.x * vec.y - this.y * vec.x;
     }
 
-    rotate(center, angle) {
+    rotate(point, angle) {
 
-        let x = this.x - center.x;
-        let y = this.y - center.y;
+        let x = this.x - point.x;
+        let y = this.y - point.y;
 
         let newXComp = x * Math.cos(angle) - y * Math.sin(angle);
-        let newYComp = x * Math.sign(angle) - y * Math.cos(angle);
+        let newYComp = y * Math.cos(angle) + x * Math.sin(angle);
 
-        newXComp += center.x;
-        newYComp += center.y;
+        newXComp += point.x;
+        newYComp += point.y;
 
         return new Vec2(newXComp, newYComp)
     }

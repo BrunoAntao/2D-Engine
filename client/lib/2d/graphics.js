@@ -61,14 +61,22 @@ Graphics.Polygon = class {
         this.parent.add(this);
 
         this.pos = pos;
+        this.anchor = new Vec2(0, 0);
         this.vectors = vectors;
+        this.v = [];
         this.angle = 0;
 
     }
 
     draw() {
 
-        Graphics.DrawPoly(this.parent.ctx, this.pos, this.vectors, this.stroke, this.fill);
+        this.vectors.forEach((vec, i) => {
+
+            this.v[i] = vec.rotate({ x: this.width * this.anchor.x, y: this.height * this.anchor.y }, this.angle);
+
+        });
+
+        Graphics.DrawPoly(this.parent.ctx, this.pos, this.v, this.stroke, this.fill);
 
     }
 
@@ -107,17 +115,17 @@ Graphics.Rect = class extends Graphics.Polygon {
 
     constructor(parent, pos = new Vec2(0, 0), options = {}) {
 
-        let op = Object.assign({
+        options = Object.assign({
             width: 32,
             height: 32
         }, options);
 
         super(parent, pos,
             [new Vec2(0, 0),
-            new Vec2(op.width, 0),
-            new Vec2(op.width, op.height),
-            new Vec2(0, op.height),],
-            op)
+            new Vec2(options.width, 0),
+            new Vec2(options.width, options.height),
+            new Vec2(0, options.height),],
+            options)
 
         this.prototype = Object.create(Graphics.Rect.prototype);
         this.prototype.draw = function () {
