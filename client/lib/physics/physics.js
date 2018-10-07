@@ -148,13 +148,13 @@ Physics.RigidCircle = class {
 
         this.vel = circle.vel;
         this.acc = circle.acc;
-        this.mass = mass;
+        this.mass = new Physics.Mass();
 
-        this.collider = new Physics.Collision(circle, undefined, undefined);
+        //this.collider = new Physics.Collision().circleVsCircle()
 
-        this.material = material;
+        this.material = new Physics.Material();
 
-        this.force = this.acc.scale(this.mass);
+        this.force = this.acc.scale(this.mass.mass);
     }
 
     update() {
@@ -166,29 +166,41 @@ Physics.RigidCircle = class {
     move() {
 
         let newPos = this.circle.center.add(this.vel);
-        this.circle.center = newPos.scale(dt);
+        this.circle.center = newPos;
 
         let newVel = this.vel.add(this.acc);
-        this.vel = newVel.scale(dt);
+        this.circle.vel = newVel;
+    }
+
+    applyForce(force) {
+
+        this.force = this.force.add(force);
+
+        this.acc = this.force.scale(1 / this.mass.mass);
     }
 }
 
 Physics.RigidPolygon = class {
 
-    constructor(polygon, vects, vel = new Vec2(0, 0), acc = new Vec2(0, 0), mass = new Mass(1, 0), material = new Material(1, 0)) {
+    constructor(polygon, vects, options = {}) {
+
+
+        Object.assign(this, {
+
+            vel: new Vec2(0, 0), 
+            acc: new Vec2(0, 0), 
+            mass: new Mass(1, 0), 
+            material: new Material(1, 0)
+
+        }, options);
 
         this.polygon = polygon;
 
         this.vects = vects;
         this.normals = [];
 
-        this.vel = vel;
-        this.acc = acc;
-        this.mass = mass;
+        //this.collider = new Physics.Collision();
 
-        //this.collider = new Collision();
-
-        this.material = material;
         this.force = this.acc.scale(this.mass);
 
         for (let i = 0; i < this.vects.length; i++) {
@@ -212,5 +224,12 @@ Physics.RigidPolygon = class {
 
         let newVel = this.vel.add(this.acc);
         this.vel = newVel.scale(dt);
+    }
+
+    applyForce(force) {
+
+        this.force = this.force.add(force);
+
+        this.acc = this.force.scale(1 / this.mass.mass);
     }
 }
